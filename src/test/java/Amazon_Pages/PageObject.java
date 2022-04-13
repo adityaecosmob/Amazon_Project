@@ -19,10 +19,10 @@ public class PageObject {
 	@FindBy(xpath = "//h2[contains(text(),'Your Orders')]")
 	protected WebElement YourOrder;
 
-	@FindBy(xpath = "//body/div[@id='a-page']/div[@id='yourOrders']/div[@id='yourOrdersContent']/div[@id='ordersContainer']/div[2]/div[2]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[4]/span[1]/span[1]/span[1]/a[1]/div[1]")
+	@FindBy(xpath = "//*[@id='orderTypeMenuContainer']/ul/li[3]/span/a")
 	protected WebElement BuyAgain;
 
-	@FindBy(xpath = "//body/div[@id='a-page']/div[3]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/img[1]")
+	@FindBy(xpath = "//body/div[@id='a-page']/div[3]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[2]/div[2]/span[1]/span[1]/span[2]")
 	protected WebElement Item;
 
 	@FindBy(xpath = "//input[@id='buy-now-native-button-B07PFFMP9P-e2oq6iqzmai']")
@@ -47,42 +47,31 @@ public class PageObject {
 	protected WebElement Friend;
 
 	@FindBy(xpath = "//*[@id=\"nav-xshop\"]/a[4]")
-	protected WebElement sibling;
-
-	@FindBy(xpath = "//*[@id=\"nav-xshop\"]/a[4]")
-	protected WebElement spouse;
-
-	@FindBy(xpath = "//*[@id=\"nav-xshop\"]/a[4]")
-	protected WebElement Collegue;
-
-	@FindBy(xpath = "//*[@id=\"nav-xshop\"]/a[4]")
 	protected WebElement others;
 
 	@FindBy(xpath = "//*[@id=\"nav-xshop\"]/a[5]")
 	protected WebElement AmazonPay;
+	
+	@FindBy(xpath = "//*[@id=\"p_72/1318476031\"]")
+	protected WebElement Ratings;
 
-	@FindBy(xpath = "//*[@id=\"nav-xshop\"]/a[6]")
-	protected WebElement PetSupplies;
+	@FindBy(xpath = "//*[@id='attach-sidesheet-view-cart-button']/span/input")
+	protected WebElement AddedToCart;
+	
+	
+	@FindBy(xpath = "//span[@class='a-truncate-cut']")
+	protected WebElement CartItem;
+	
+	@FindBy(xpath = "//*[@id=\"acrPopover\"]/span[1]/a/i[1]")
+	protected WebElement HoverRating_iphoneblue;
 
-	@FindBy(xpath = "//*[@id=\"nav-xshop\"]/a[7]")
-	protected WebElement AmazonBasics;
-
-	@FindBy(xpath = "//*[@id=\"nav-xshop\"]/a[8]")
-	protected WebElement Groceries;
-
-	@FindBy(xpath = "//*[@id=\"nav-xshop\"]/a[9]")
-	protected WebElement HomeImprovement;
-
-	@FindBy(xpath = "//*[@id=\"nav-xshop\"]/a[10]")
-	protected WebElement CustService;
-
-	@FindBy(xpath = "//span[contains(text(),'Apple iPhone 13 (256GB) - Blue')]")
+	@FindBy(xpath = "//*[@id=\"search\"]/div[1]/div[1]/div/span[3]/div[2]/div[11]/div/div/div/div/div/div[2]/div/div/div[1]/h2/a/span")
 	protected WebElement iphone;
+	
+	@FindBy(xpath = "//span[contains(text(),'Apple iPhone 13 (128GB) - Midnight')]")
+	protected WebElement Apple_iphone13;
 
-	@FindBy(xpath = "//div")
-	protected List<WebElement> allURLs;
-
-	@FindBy(xpath = "//input[@id='add-to-cart-button']")
+	@FindBy(xpath = "//*[@id='add-to-cart-button']")
 	protected WebElement AddToCart;
 
 	@FindBy(xpath = "//*[@id=\"attach-sidesheet-checkout-button\"]/span/input")

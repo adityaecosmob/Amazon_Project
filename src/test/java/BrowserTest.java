@@ -12,68 +12,102 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
+
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
+import com.aventstack.extentreports.reporter.configuration.Theme;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BrowserTest {
 
+//	public ExtentHtmlReporter htmlreporter;
+//	public ExtentReports extent;
+//	public ExtentTest test;
 	WebDriver driver = null;
+	String localpath;
+	File file;
+	
+	
+    
 
 	@BeforeSuite(description = "Performing Browser launching operation")
 	@Parameters("BrowserName")
-	public void initsuit(String BrowserName) {
-		System.out.println("Browser name is : " + BrowserName); // printing browser name
+	public void initsuit(String BrowserName) { 
+		
+		//generating extent reports
+//	     file=	new File (localpath+"/test-output/extent-report.html");
+//		 htmlreporter=new ExtentHtmlReporter(file);
+//		 htmlreporter.config().setEncoding("utf-8");
+//		 htmlreporter.config().setDocumentTitle("Automation Reports");
+//		 htmlreporter.config().setReportName("Automation test results");
+//		 htmlreporter.config().setTheme(Theme.STANDARD);
+//		 
+//		 extent=new ExtentReports();
+//		 extent.attachReporter(htmlreporter);
+
+		//User can select their choice of browser
+		 System.out.println("Browser name is : " + BrowserName); // printing browser name
 
 		// To run our test through chromedriver
 		if (BrowserName.equalsIgnoreCase("Chrome")) {
 			WebDriverManager.chromedriver().setup();
-			Configreader config = new Configreader();
 			driver = new ChromeDriver();
-			driver.get(config.getURL());
-			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		}
-		// To run our test through Firefoxdriver
+					}
+//		 To run our test through Firefoxdriver
 		else if (BrowserName.equalsIgnoreCase("Firefox")) {
 			WebDriverManager.firefoxdriver().setup();
-			Configreader config = new Configreader();
 			driver = new FirefoxDriver();
-			driver.get(config.getURL());
-			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		}
 		// To run our test through Edgedriver
 		else if (BrowserName.equalsIgnoreCase("Edge")) {
 			WebDriverManager.edgedriver().setup();
-			Configreader config = new Configreader();
 			driver = new EdgeDriver();
-			driver.get(config.getURL());
-			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
 		}
 
 	}
 
 	@BeforeTest(description = "Performing some essentials before tesing application")
-	public void basics() {
+	public void basics() {    //Basic browser launching operation, deleting cookies and get Webtitle
+//		test =extent.createTest("Testing Browser launching operation");
+		Configreader config = new Configreader();
+		driver.get(config.getURL());
+//		test.info("Navigating to URL");
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+//		test.info("Waiting for 10 till all webelements on page gets loaded");		
 		// maximizing the browser window
 		driver.manage().window().maximize();
+//		test.info("Maximizing the chrome browser");
 		// Deleting all cookies on browser before executing test
 		driver.manage().deleteAllCookies();
+//		test.info("Deleting all cookies before test");
+
 
 		// To get title of the website
 		String Webtitle = driver.getTitle();
+//		test.info("Fetching the title of the webpage");
 		System.out.println("The title of Amazon website is :" + Webtitle);
 		Assert.assertEquals(Webtitle,
 				"Online Shopping site in India: Shop Online for Mobiles, Books, Watches, Shoes and More - Amazon.in");
+//        test.pass("Checking the title of webpage");	
+//        test.log(Status.PASS, "Test Method Successful");
 	}
+	
+	
 
-	@AfterClass
-       public void afterclass() throws EmailException {
+//	@AfterClass
+       public void afterclass() throws EmailException {  //To autogenerate mail consist of test execution reports
 
 		// Create the attachment
 		EmailAttachment attachment = new EmailAttachment();
-		String localpath = System.getProperty("user.dir");
+		 localpath = System.getProperty("user.dir");
 		String path1 = localpath + "/test-output/emailable-report.html";
 		String path2 = localpath + "/test-output/index.html";
 		attachment.setPath(path1);
@@ -107,6 +141,8 @@ public class BrowserTest {
 	@AfterSuite
 	public void teardown() {
 		driver.quit(); // closing all browser instances
+//		test.info("Closing the browser instance");
+//		extent.flush();
 	}
 
 }

@@ -5,11 +5,8 @@
     <classes>
       <class name="HomePageTest">
         <methods>
-          <include name="afterclass"/>
           <include name="enteringcredentials"/>
           <include name="teardown"/>
-          <include name="SearchingItem"/>
-          <include name="AmzonOrderBooking"/>
           <include name="initsuit"/>
           <include name="basics"/>
         </methods>

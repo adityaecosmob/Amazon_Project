@@ -2,6 +2,10 @@
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
+
 import Amazon_Pages.HomePage;
 import Amazon_Pages.LoginPage;
 import Util.Exceldataprovider;
@@ -16,7 +20,7 @@ public class HomePageTest extends BrowserTest {
 	}
 
 	@Test(priority = 2, description = "To order item successfully")
-	public void AmzonOrderBooking() throws InterruptedException {
+	public void AmzonOrderBooking() throws Exception {
 		HomePage homepage_orderitem = new HomePage(driver);
 		homepage_orderitem.BookOrder();
 	}

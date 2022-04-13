@@ -6,10 +6,9 @@
     <classes>
       <class name="HomePageTest">
         <methods>
-          <include name="afterclass"/>
-          <include name="enteringcredentials" invocation-numbers="0"/>
+          <include name="enteringcredentials"/>
           <include name="teardown"/>
-          <include name="SearchingItem" invocation-numbers="0"/>
+          <include name="SearchingItem"/>
           <include name="AmzonOrderBooking"/>
           <include name="initsuit"/>
           <include name="basics"/>
